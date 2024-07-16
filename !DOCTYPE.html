@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Игра с числами</title>
+<style>
+    /* стили CSS */
+</style>
+</head>
+<body>
+<h1>Игра с числами</h1>
+<p>Ведущий вводит число:</p>
+<input type="number" id="ведущий-число">
+<button onclick="проверитьЧисло()">Проверить число</button>
+<div id="участники"></div>
+
+<script>
+    function проверитьЧисло() {
+        // Получаем число ведущего
+        let ведущийЧисло = parseInt(document.getElementById('ведущий-число').value);
+
+        // Остальная логика игры и вычисления ошибок участников
+        // Ваш JavaScript код здесь
+
+        // Выводим результат участникам
+        document.getElementById('участники').innerHTML = `
+            <p>Участник 1: 98 баллов</p>
+            <p>Участник 2: 90 баллов</p>
+            <!-- Другие участники здесь -->
+        `;
+    }
+</script>
+</body>
+</html>
