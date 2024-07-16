@@ -1,35 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Игра с числами</title>
-<style>
-    /* стили CSS */
-</style>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Page</title>
+    <style>
+        input {
+            margin-bottom: 10px;
+        }
+    </style>
 </head>
 <body>
-<h1>Игра с числами</h1>
-<p>Ведущий вводит число:</p>
-<input type="number" id="ведущий-число">
-<button onclick="проверитьЧисло()">Проверить число</button>
-<div id="участники"></div>
-
-<script>
-    function проверитьЧисло() {
-        // Получаем число ведущего
-        let ведущийЧисло = parseInt(document.getElementById('ведущий-число').value);
-
-        // Остальная логика игры и вычисления ошибок участников
-        // Ваш JavaScript код здесь
-
-        // Выводим результат участникам
-        document.getElementById('участники').innerHTML = `
-            <p>Участник 1: 98 баллов</p>
-            <p>Участник 2: 90 баллов</p>
-            <!-- Другие участники здесь -->
-        `;
-    }
-</script>
+    <h1>Игра "Угадай число"</h1>
+    <label for="hostInput">Введите число для ведущего:</label>
+    <input type="number" id="hostInput"><br>
+    <label for="playerInput">Введите ваше число:</label>
+    <input type="number" id="playerInput">
+    <button onclick="calculateScore()">Проверить</button>
+    <p id="scoreMessage"></p>
+    
+    <script>
+        function calculateScore() {
+            var hostNumber = document.getElementById('hostInput').value;
+            var playerNumber = document.getElementById('playerInput').value;
+            var lifePoints = 100;
+            
+            if(!hostNumber || !playerNumber) {
+                alert("Пожалуйста, введите оба числа.");
+                return;
+            }
+            
+            var delta = Math.abs(hostNumber - playerNumber);
+            lifePoints -= delta;
+            
+            document.getElementById('scoreMessage').innerText = "У вас осталось " + lifePoints + " баллов.";
+        }
+    </script>
 </body>
 </html>
